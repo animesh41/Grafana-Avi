@@ -67,35 +67,36 @@ The application stack is broken into three separate services:
  ## Avi Metrics Script
 
 * Download the metricscollection.py script and configuration-example.yaml from github location : 
+    - https://github.com/avinetworks/devops/tree/master/monitoring_tools/metrics%20collection
 
-* Modify  the configuration.yaml
+## Modify  the configuration.yaml
 
-     avi_cluster_name: clustername
-     avi_controller: controller ip address
-     avi_user: admin
-     #comment: ACCEPTS PLAIN TEXT OR BASE64 ENCODED PASSWORD
-     avi_pass: password
-     tags:
-      environment: dev
-      location: datacenter1    
+     # avi_cluster_name: clustername
+     # avi_controller: controller ip address
+     # avi_user: admin
+     # comment: ACCEPTS PLAIN TEXT OR BASE64 ENCODED PASSWORD
+     # avi_pass: password
+     # tags:
+      # environment: dev
+      # location: datacenter1    
 
-    ** configure the virtualservice name
-    ** Add the metrics required : https://avinetworks.com/docs/22.1/metrics-list/
-
-    ** configure the metrics_endpoint config to influx db
-    metrics_endpoint_config:
-         - type: influxdb
-           enable: True
-           server: ip address 
-           server_port: 8086
-           protocol: http
-           db: db name used during database creation within influxdb
-           #_comment":"Change metric_prefix only if you need to define a prefix",
-           metric_prefix: ""
-           #_comment":"If using auth on influxdb set auth-enabled to true and modify the credential values",
-           auth-enabled: True
-           username: admin
-           password: password
+* configure the virtualservice name
+* Add the metrics required : https://avinetworks.com/docs/22.1/metrics-list/
+* configure the metrics_endpoint config to influx db
+    
+        # metrics_endpoint_config:
+        # - type: influxdb
+        # enable: True
+        # server: ip address 
+        # server_port: 8086
+        # protocol: http
+        # db: db name used during database creation within influxdb
+        #_comment":"Change metric_prefix only if you need to define a prefix",
+        # metric_prefix: ""
+        #_comment":"If using auth on influxdb set auth-enabled to true and modify the credential values",
+        # auth-enabled: True
+        # username: admin
+        # password: password
 
 
 * Create a folder and move the metricscollection.py script and configuration.yaml to it
@@ -117,17 +118,13 @@ Cronjob by default runs every minute, for 5 seconds interval a  shell script can
 ## Access the Grafana Dashboard
 
 - Access the Grafana on the http://GrafanaVMIP:3000
-- Import the dashboards as required  from NSX ALB Devops github 
+- Import the dashboards as required  from Devops github : https://github.com/avinetworks/devops/tree/master/monitoring_tools/grafana/influxdb
 - On Grafana UI, Select >  Dashboards > New > Import and select the json downloaded from the github to load the file. 
 - Modify and configure accordingly 
 
 ## Appendix : 
 
-- https://github.com/avinetworks/devops/blob/master/monitoring/metrics%20collection/README.md
+- https://github.com/avinetworks/devops/tree/master/monitoring_tools/avimetrics%20script
+- https://github.com/avinetworks/devops/tree/master/monitoring_tools/metrics%20collection
+- https://github.com/avinetworks/devops/tree/master/monitoring_tools/grafana/influxdb
 - https://avinetworks.com/docs/22.1/metrics-list/
-- https://github.com/avinetworks/devops/tree/master/monitoring/grafana/influxdb
-- https://docs.influxdata.com/influxdb/v1/introduction/get-started/
-
-
-
-
