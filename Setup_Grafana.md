@@ -28,7 +28,6 @@ The application stack is broken into three separate services:
     ## sudo apt-get update && sudo apt-get install influxdb
     ## sudo systemctl unmask influxdb.service
     ## sudo systemctl start influxdb
-    ## sudo service influxdb start¯
     ## sudo apt-get install influxdb
     ## sudo service influxdb start
 
